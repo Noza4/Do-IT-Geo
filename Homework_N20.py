@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 endpoint = 'https://rickandmortyapi.com/api/character'
 
 response = requests.get(endpoint)
