@@ -1,0 +1,10 @@
+INSERT INTO public."Deposits" 
+VALUES (1, 'Nika', '08-04-2004', 'Tbilisi', 'Wereteli'), (2, 'Nikolozi', '08-04-2004', 'Tbilisi', 'Saburtalo'),
+(3, 'Leqso', '08-04-2004', 'Tbilisi', 'Didube')
+
+INSERT INTO public."Deposits" ("DepOwnerName", "DateOfBirth", "DepositAmount", "Commision", "Total") 
+VALUES ('Gio', '08-04-2004', 100, 20, 120), ('Mari', '08-04-2004', 100, 20, 120),
+('Tako', '08-04-2004', 100, 20, 120), ('Tekla', '08-04-2004', 100, 20, 120),
+('Sandro', '08-04-2004', 100, 20, 120)
+
+SELECT * FROM public."Deposits"
