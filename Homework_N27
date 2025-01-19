@@ -1,0 +1,75 @@
+CREATE TABLE Cities (
+ID SERIAL PRIMARY KEY,
+CityName VARCHAR(50) NOT NULL,
+ZipCode VARCHAR(10) NOT NULL
+);
+
+INSERT INTO Cities (CityName, ZipCode)
+VALUES 
+	('Tbilisi', '01234'),
+	('Batumi', '12345'),
+	('Qutaisi', '23456'),
+	('Telavi', '34567');
+
+
+CREATE TABLE AccountTypes (
+ID SERIAL PRIMARY KEY,
+AccountTypeName VARCHAR(50) NOT NULL
+);
+
+INSERT INTO AccountTypes (AccountTypeName)
+VALUES
+	('Visa'),
+	('Master Card'),
+	('Amex'),
+	('ვადიანი ანაბარი');
+
+
+CREATE TABLE Customers (
+ID SERIAL PRIMARY KEY,
+Idnumber VARCHAR(11) NOT NULL,
+First_Name VARCHAR(30) NOT NULL,
+Last_Name VARCHAR(50) NOT NULL,
+Date_of_Birth DATE NOT NULL,
+CityID INTEGER,
+Street VARCHAR(70),
+HouseNumber VARCHAR(5),
+Income FLOAT
+);
+
+ALTER TABLE Customers
+ALTER COLUMN Date_of_Birth DROP NOT NULL
+
+insert into customers(idnumber, first_name, Last_Name, cityid, income) 
+values
+	('123456789', 'John', 'Walker', 1, 1774.5),
+	('123456888', 'Anna', 'Watson', 2, 5554.5),
+	('123456777', 'Kate', 'Washington', 2, 4444.5),
+	('123456000', 'James', 'Brown', 3, 2224.5),
+	('123456111', 'Bob', 'Newman', 3, 3334.5);
+
+
+CREATE TABLE AccountNumbers (
+ID SERIAL PRIMARY KEY,
+Customer_ID_Number VARCHAR(11) NOT NULL,
+AccountNumber VARCHAR(50) NOT NULL,
+AccounttypeID INTEGER NOT NULL,
+Balance Float Default 0
+);
+
+insert into accountnumbers(customer_id_number, accountnumber, accounttypeid) values
+('123456789', 'GE00BG00000012345678', 1),
+('123456789', 'GE00BG00000012345777', 2),
+('123456000', 'GE00BG00000065421234', 1),
+('123456888', 'GE00BG00000011222333', 1)
+
+Alter table customers add constraint customer_city_id_fk foreign key (cityid) references cities(id)
+
+Alter table accountnumbers add constraint account_type_id_fk foreign key (accounttypeid) references accounttypes(id)
+
+alter table customers add constraint unique_id_number unique (idnumber)
+
+alter table accountnumbers add constraint customer_id_number_fk foreign key (customer_id_number) references customers(idnumber)
+
+
+
