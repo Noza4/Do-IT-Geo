@@ -1,75 +1,65 @@
-CREATE TABLE Cities (
-ID SERIAL PRIMARY KEY,
-CityName VARCHAR(50) NOT NULL,
-ZipCode VARCHAR(10) NOT NULL
-);
+-- CREATE TABLE Customer (
+--     ID SERIAL PRIMARY KEY,
+--     FullName VARCHAR(50) NOT NULL,
+--     Phone VARCHAR(15) NOT NULL
+-- );
 
-INSERT INTO Cities (CityName, ZipCode)
-VALUES 
-	('Tbilisi', '01234'),
-	('Batumi', '12345'),
-	('Qutaisi', '23456'),
-	('Telavi', '34567');
+-- CREATE TABLE Product (
+--     ID SERIAL PRIMARY KEY,
+--     ProductName VARCHAR(50) NOT NULL,
+--     Product_Category INTEGER,
+--     Product_Cat_Type INTEGER,
+--     Price MONEY
+-- );
 
+-- CREATE TABLE Category (
+--     ID SERIAL PRIMARY KEY,
+--     Cat_Name VARCHAR(50) NOT NULL
+-- );
 
-CREATE TABLE AccountTypes (
-ID SERIAL PRIMARY KEY,
-AccountTypeName VARCHAR(50) NOT NULL
-);
+-- CREATE TABLE Category_Type (
+--     ID SERIAL PRIMARY KEY,
+--     Category_Type VARCHAR(50) NOT NULL
+-- );
 
-INSERT INTO AccountTypes (AccountTypeName)
-VALUES
-	('Visa'),
-	('Master Card'),
-	('Amex'),
-	('ვადიანი ანაბარი');
+-- CREATE TABLE Orders (
+--     ID SERIAL PRIMARY KEY,
+--     Customer_Name INTEGER NOT NULL,
+--     Product_Name INTEGER NOT NULL,
+--     Quantity INTEGER NOT NULL,
+--     Order_Date DATE,
+--     Delivery_Address VARCHAR(100) NOT NULL,
+--     CONSTRAINT FK_Customer_Order FOREIGN KEY (Customer_Name) REFERENCES Customer(ID) ON DELETE CASCADE,
+--     CONSTRAINT FK_Product_Order FOREIGN KEY (Product_Name) REFERENCES Product(ID) ON DELETE CASCADE
+-- );
 
+-- INSERT INTO Customer (FullName, Phone)
+-- VALUES
+--     ('Nika Nozadze', '955100300'),
+--     ('Mike Tyson', '955100300'),
+--     ('Max Holloway', '955100300'),
+--     ('Sam Sulek', '955100300'),
+--     ('Sam Altman', '955100300');
 
-CREATE TABLE Customers (
-ID SERIAL PRIMARY KEY,
-Idnumber VARCHAR(11) NOT NULL,
-First_Name VARCHAR(30) NOT NULL,
-Last_Name VARCHAR(50) NOT NULL,
-Date_of_Birth DATE NOT NULL,
-CityID INTEGER,
-Street VARCHAR(70),
-HouseNumber VARCHAR(5),
-Income FLOAT
-);
+-- INSERT INTO Product (ProductName, Product_Category, Product_Cat_Type, Price)
+-- VALUES
+--     ('IPHONE 14 PRO', 1, 1, 1200.00),
+--     ('IPHONE 15', 1, 1, 1400.00),
+--     ('Lenovo Legion 5', 1, 2, 1500.00),
+--     ('MacBook Air M3', 1, 2, 2000.00);
 
-ALTER TABLE Customers
-ALTER COLUMN Date_of_Birth DROP NOT NULL
+-- INSERT INTO Category (Cat_Name)
+-- VALUES
+--     ('ELECTRONICS');
 
-insert into customers(idnumber, first_name, Last_Name, cityid, income) 
-values
-	('123456789', 'John', 'Walker', 1, 1774.5),
-	('123456888', 'Anna', 'Watson', 2, 5554.5),
-	('123456777', 'Kate', 'Washington', 2, 4444.5),
-	('123456000', 'James', 'Brown', 3, 2224.5),
-	('123456111', 'Bob', 'Newman', 3, 3334.5);
+-- INSERT INTO Category_Type (Category_Type)
+-- VALUES
+--     ('SMARTPHONE'),
+--     ('LAPTOP');
 
-
-CREATE TABLE AccountNumbers (
-ID SERIAL PRIMARY KEY,
-Customer_ID_Number VARCHAR(11) NOT NULL,
-AccountNumber VARCHAR(50) NOT NULL,
-AccounttypeID INTEGER NOT NULL,
-Balance Float Default 0
-);
-
-insert into accountnumbers(customer_id_number, accountnumber, accounttypeid) values
-('123456789', 'GE00BG00000012345678', 1),
-('123456789', 'GE00BG00000012345777', 2),
-('123456000', 'GE00BG00000065421234', 1),
-('123456888', 'GE00BG00000011222333', 1)
-
-Alter table customers add constraint customer_city_id_fk foreign key (cityid) references cities(id)
-
-Alter table accountnumbers add constraint account_type_id_fk foreign key (accounttypeid) references accounttypes(id)
-
-alter table customers add constraint unique_id_number unique (idnumber)
-
-alter table accountnumbers add constraint customer_id_number_fk foreign key (customer_id_number) references customers(idnumber)
-
+-- INSERT INTO Orders (Customer_Name, Product_Name, Quantity, Order_Date, Delivery_Address)
+-- VALUES
+--     (1, 1, 1, '2025-01-19', '123 Main Street'),
+--     (2, 3, 2, '2025-01-18', '456 Elm Street');
 
 
