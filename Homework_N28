@@ -1,0 +1,41 @@
+-- #1
+-- SELECT Fullname FROM Customer c
+-- JOIN Orders o on c.ID = o.Customer_Name;
+
+-- #2
+-- SELECT phone, Product_Name, order_date 
+-- FROM Orders o
+-- JOIN Customer c on o.Customer_Name = c.ID
+-- WHERE c.ID = 1
+
+-- #3
+-- SELECT o.ID, c.Fullname, o.Product_Name, o.Quantity, o.Order_Date, o.Delivery_address 
+-- FROM Orders o
+-- JOIN Customer c on c.ID = o.Customer_name
+
+-- #4
+-- SELECT c.Fullname, ct.cat_name
+-- FROM orders o
+-- JOIN customer c on o.Customer_name = c.ID
+-- JOIN Product p on o.Product_Name = p.ID
+-- JOIN Category ct on p.product_category = ct.ID
+
+-- #5
+-- SELECT * FROM ORDERS o
+-- JOIN Product p on o.product_name = p.id
+-- JOIN Category_type c on p.product_cat_type = c.id
+-- WHERE o.Order_date < '2025-01-01' and c.category_type = 'Laptop'
+
+-- #6
+-- SELECT * FROM orders o
+-- JOIN Product p on o.product_name = p.ID
+-- JOIN Category c on p.product_Category = c.ID
+-- WHERE c.Cat_Name = 'Furniture' and (o.order_date >= '2024-09-01' and o.order_date < '2024-12-01') 
+
+-- #7
+-- SELECT c.Fullname, ctype.Category_type, ct.Cat_name, o.Delivery_Address FROM Orders o
+-- JOIN Customer c on o.Customer_name = c.ID
+-- JOIN Product p on o.Product_name = p.ID
+-- JOIN Category ct on p.Product_Category = ct.ID
+-- JOIN Category_type ctype on p.Product_cat_type = ctype.ID
+
